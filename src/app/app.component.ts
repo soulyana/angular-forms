@@ -27,6 +27,19 @@ export class AppComponent implements OnInit {
   this.signupForm.statusChanges.subscribe(
     (status) => console.log(status)
   );
+  this.signupForm.setValue({
+    'userData': {
+      'username': 'Maxine',
+      'email': 'max@test.com'
+    },
+    'gender': 'female',
+    'hobbies': []
+  });
+  this.signupForm.patchValue({
+    'userData': {
+      'username': 'Anne'
+    }
+  });
  }
 
 getControls() {
@@ -60,5 +73,6 @@ forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
 
 onSubmit() {
    console.log(this.signupForm);
+   this.signupForm.reset();
  }
 }
